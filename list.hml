@@ -1,0 +1,20 @@
+<html>
+<body>
+Ordered List : 
+<br>
+Colours:
+<ol>
+<li>Blue</li>
+<li>Red</li>
+</ol>
+<br>
+UnOrdered List : 
+<br>
+Flowers:<br>
+<Ul>
+<li>Rose</li>
+<li>Jasmin</li>
+</Ul>
+
+</body>
+</html>

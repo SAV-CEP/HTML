@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>Monthly Calendar</title>
+</head>
+
+<body>
+
+    <h2>Calendar Generator</h2>
+
+    <label>Enter Year:</label>
+    <input type="number" id="year">
+
+    <br><br>
+
+    <label>Enter Month:</label>
+    <input type="number" id="month" min="1" max="12"
+           placeholder="1 - 12">
+
+    <br><br>
+
+    <button onclick="generateCalendar()">Generate Calendar</button>
+
+    <div id="calendar"></div>
+
+
+    <script>
+
+        function generateCalendar() {
+
+            // Get year and month from user
+            let year = Number(document.getElementById("year").value);
+            let month = Number(document.getElementById("month").value);
+
+            // Check whether the month is valid
+            if (month < 1 || month > 12) {
+                document.getElementById("calendar").innerHTML =
+                    "Please enter a month between 1 and 12.";
+                return;
+            }
+
+            // Get the first day of the month
+            let firstDay = new Date(year, month - 1, 1).getDay();
+
+            // Get the number of days in the month
+            let daysInMonth = new Date(year, month, 0).getDate();
+
+            // Month names
+            let monthNames = [
+                "January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December"
+            ];
+
+            // Create calendar
+            let calendar = "<h3>" + monthNames[month - 1] +
+                           " " + year + "</h3>";
+
+            calendar += "<table border='1' cellpadding='10'>";
+
+            // Days of the week
+            calendar += "<tr>";
+            calendar += "<th>Sun</th>";
+            calendar += "<th>Mon</th>";
+            calendar += "<th>Tue</th>";
+            calendar += "<th>Wed</th>";
+            calendar += "<th>Thu</th>";
+            calendar += "<th>Fri</th>";
+            calendar += "<th>Sat</th>";
+            calendar += "</tr>";
+
+            // Start first week
+            calendar += "<tr>";
+
+            // Empty cells before the first day
+            for (let i = 0; i < firstDay; i++) {
+                calendar += "<td></td>";
+            }
+
+            // Add the days
+            for (let day = 1; day <= daysInMonth; day++) {
+
+                calendar += "<td>" + day + "</td>";
+
+                // Start a new row after Saturday
+                if ((firstDay + day) % 7 == 0) {
+                    calendar += "</tr><tr>";
+                }
+            }
+
+            calendar += "</tr>";
+            calendar += "</table>";
+
+            // Display calendar
+            document.getElementById("calendar").innerHTML = calendar;
+        }
+
+    </script>
+
+</body>
+</html>

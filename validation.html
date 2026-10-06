@@ -1,0 +1,148 @@
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name">
+        <br><br>
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <br><br>
+
+        <label>Phone:</label>
+        <input type="text" id="phone">
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <br><br>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword">
+        <br><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <br><br>
+
+        <input type="checkbox" id="terms">
+        <label>I agree to the terms and conditions</label>
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p id="message"></p>
+
+
+    <script>
+
+        function validateForm() {
+
+            // Get values from the form
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            let message = document.getElementById("message");
+
+
+            // Check name
+            if (name == "") {
+                message.innerHTML = "Please enter your name.";
+                return false;
+            }
+
+
+            // Check email
+            if (email == "") {
+                message.innerHTML = "Please enter your email.";
+                return false;
+            }
+
+            if (!email.includes("@")) {
+                message.innerHTML = "Please enter a valid email.";
+                return false;
+            }
+
+
+            // Check phone number
+            if (phone == "") {
+                message.innerHTML = "Please enter your phone number.";
+                return false;
+            }
+
+            if (phone.length != 10) {
+                message.innerHTML =
+                    "Phone number must contain 10 digits.";
+                return false;
+            }
+
+
+            // Check password
+            if (password == "") {
+                message.innerHTML = "Please enter a password.";
+                return false;
+            }
+
+            if (password.length < 6) {
+                message.innerHTML =
+                    "Password must contain at least 6 characters.";
+                return false;
+            }
+
+
+            // Check confirm password
+            if (password != confirmPassword) {
+                message.innerHTML =
+                    "Passwords do not match.";
+                return false;
+            }
+
+
+            // Check gender
+            let gender = document.querySelector(
+                'input[name="gender"]:checked'
+            );
+
+            if (gender == null) {
+                message.innerHTML = "Please select your gender.";
+                return false;
+            }
+
+
+            // Check terms and conditions
+            let terms = document.getElementById("terms").checked;
+
+            if (!terms) {
+                message.innerHTML =
+                    "Please accept the terms and conditions.";
+                return false;
+            }
+
+
+            // If everything is correct
+            message.innerHTML =
+                "Registration successful!";
+
+            return false;
+        }
+
+    </script>
+
+</body>
+</html>
+

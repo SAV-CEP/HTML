@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>String and Math Functions</title>
+</head>
+
+<body>
+
+    <h2>JavaScript String and Math Objects</h2>
+
+    <!-- STRING INPUT -->
+    <h3>String Functions</h3>
+
+    <label>Enter a string:</label>
+    <input type="text" id="textInput">
+
+    <br><br>
+
+    <button onclick="stringFunctions()">String Functions</button>
+
+    <p id="stringResult"></p>
+
+
+    <!-- MATH INPUT -->
+    <h3>Math Functions</h3>
+
+    <label>Enter a number:</label>
+    <input type="number" id="numberInput">
+
+    <br><br>
+
+    <button onclick="mathFunctions()">Math Functions</button>
+
+    <p id="mathResult"></p>
+
+
+    <script>
+
+        // STRING FUNCTIONS
+
+        function stringFunctions() {
+
+            let text = document.getElementById("textInput").value;
+
+            document.getElementById("stringResult").innerHTML =
+                "Length: " + text.length + "<br>" +
+                "Uppercase: " + text.toUpperCase() + "<br>" +
+                "Lowercase: " + text.toLowerCase() + "<br>" +
+                "Character at position 1: " + text.charAt(1) + "<br>" +
+                "Contains 'Java': " + text.includes("Java");
+        }
+
+
+        // MATH FUNCTIONS
+
+        function mathFunctions() {
+
+            let number = Number(document.getElementById("numberInput").value);
+
+            document.getElementById("mathResult").innerHTML =
+                "Round: " + Math.round(number) + "<br>" +
+                "Floor: " + Math.floor(number) + "<br>" +
+                "Ceil: " + Math.ceil(number) + "<br>" +
+                "Square Root: " + Math.sqrt(number) + "<br>" +
+                "Power of 2: " + Math.pow(number, 2) + "<br>" +
+                "Maximum: " + Math.max(number, 10, 20, 30) + "<br>" +
+                "Minimum: " + Math.min(number, 10, 20, 30) + "<br>" +
+                "Random Number: " + Math.random();
+        }
+
+    </script>
+
+</body>
+</html>
+
