@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html> <head> <title>Online Exam</title> </head>
+
+<body style="text-align:center; background:lightblue;">
+
+<h2>Online Examination</h2>
+
+<p>1. Which language is used for web development?</p> 
+<input type="radio" name="q1" value="HTML"> HTML 
+<input type="radio" name="q1" value="Python">Python
+<input type="radio" name="q1" value="C"> C
+
+<p>2. Which is a JavaScript function?</p>
+<input type="radio" name="q2" value="print">print()
+<input type="radio" name="q2" value="alert">alert()
+<input type="radio" name="q2" value="display">display()
+
+<p>3. Which tag is used for a heading?</p>
+<input type="radio" name="q3" value="h1">h1 
+<input type="radio" name="q3" value="p">p 
+<input type="radio" name="q3" value="br">br
+
+<br><br>
+
+<button onclick="check()">Submit</button>
+
+<h3 id="result"></h3>
+
+<script> 
+function check()
+{ 
+let score = 0;
+if (document.querySelector('[name=q1]:checked')?.value == "HTML") score++;
+if (document.querySelector('[name=q2]:checked')?.value =="alert") score++;
+if (document.querySelector('[name=q3]:checked')?.value == "h1")score++;
+document.getElementById("result").innerHTML = "Score: " + score + "/3"; } </script>
+
+</body> </html>
